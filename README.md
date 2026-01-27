@@ -1,5 +1,32 @@
-# data_driven_house_price_analysis_and_prediction
-A data analytics and AI project exploring residential house prices using Python, machine learning, and an interactive dashboard.
+# Data driven house price analysis and prediction
+A data analytics and AI project exploring residential house prices using Python, machine learning, and an interactive dashboard exploring house inflation.
+
+<p align="center">
+  <img src="app/assets/images/inflation.gif" alt="House price inflation animation" width="520">
+</p>
+
+## Table of Contents
+
+- [Client Brief](#client-brief)
+  - [Client Needs](#client-needs)
+- [Project Aim](#project-aim)
+- [Hackathon Delivery Model](#hackathon-delivery-model)
+- [Team Structure (Fixed for All 3 Days)](#team-structure-fixed-for-all-3-days)
+  - [Project Lead / Product Owner (Person A – Lead)](#1-project-lead--product-owner-person-a--lead)
+  - [Data & Modelling Engineer (Person B)](#2-data--modelling-engineer-person-b)
+  - [Dashboard & UX Engineer (Person C)](#3-dashboard--ux-engineer-person-c)
+- [Day-by-Day Breakdown (With Explicit Deliverables)](#day-by-day-breakdown-with-explicit-deliverables)
+  - [DAY 1 — Foundations & Direction (Critical)](#day-1--foundations--direction-critical)
+  - [DAY 2 — Analysis, AI Integration & Insight Generation](#day-2--analysis-ai-integration--insight-generation)
+  - [DAY 3 — Polish, Evidence & Submission Readiness](#day-3--polish-evidence--submission-readiness)
+- [Accountability Matrix (Condensed)](#accountability-matrix-condensed)
+- [Key Hackathon Rule](#key-hackathon-rule)
+- [Purpose](#purpose)
+- [Business Case](#business-case)
+- [Target Audience](#target-audience)
+- [Project Hypotheses](#project-hypotheses)
+- [Project Plan (LO10)](#project-plan-lo10)
+
 
 ## Client Brief
 
@@ -377,4 +404,8 @@ This project follows a structured, time-bound development plan aligned with best
 - Outline future improvements, maintenance, and potential extensions  
 
 This structured plan ensures the project is **maintainable, extensible, and aligned with real-world analytics workflows**, clearly demonstrating Learning Outcome 10 (LO10).
+
+## Credits
+- https://deevid.ai/
+- kdenlive
 
