@@ -1,9 +1,14 @@
-# Data driven house price analysis and prediction
-A data analytics and AI project exploring residential house prices using Python, machine learning, and an interactive dashboard exploring house inflation.
+<h1 align="center"><strong>Data driven house price analysis and prediction</strong></h1>
 
 <p align="center">
   <img src="app/assets/images/inflation.gif" alt="House price inflation animation" width="520">
 </p>
+
+<p align="center">
+  <em>Visual metaphor for house price inflation and market dynamics</em>
+</p>
+
+A data analytics and AI project exploring residential house prices using Python, machine learning, and an interactive dashboard.
 
 ## Table of Contents
 
@@ -25,8 +30,8 @@ A data analytics and AI project exploring residential house prices using Python,
 - [Business Case](#business-case)
 - [Target Audience](#target-audience)
 - [Project Hypotheses](#project-hypotheses)
+- [Project Learnings & Problem Log](#project-learnings--problem-log)
 - [Project Plan (LO10)](#project-plan-lo10)
-
 
 ## Client Brief
 
@@ -372,6 +377,19 @@ The following hypotheses guide the analytical approach of this project and are e
 Each hypothesis is tested and validated through data exploration, statistical analysis, and model evaluation within the Jupyter notebooks and reflected in the dashboard insights.
 
 ---
+## Project Learnings & Problem Log
+
+This section records key challenges encountered during development, how they were resolved, and lessons learned.  
+It is intended as a shared reference for collaborators and future maintainers.
+
+| Date       | Area    | Problem                                | Resolution        | What We Learned                     | Screenshot |
+|------------|---------|----------------------------------------|-------------------|-------------------------------------|------------|
+| 2026-01-28 | Process | No central place to record problems    | Added log section | Capture issues early saves time     | [![Problem log][pl-log]] |
+| YYYY-MM-DD |         |                                        |                   |                                     |            |
+
+[pl-log]: app/assets/images/project_learnings_problem_log.png
+
+
 
 ## Project Plan (LO10)
 
