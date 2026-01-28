@@ -421,18 +421,19 @@ At the close of EDA, the following hypotheses have been validated as true:
 
 
 
-### Feature Engineering Requirements
+### Feature Engineering
 1. Target variable has a strong right skew. Requirement is to apply a log transformation to improve linear model performance by reducing influence of extreme high-price properties.
 2. Engineer HouseAge, RemodAge and TotalArea
 3. One-hot encode Neighbourhood with 2 to 3 categoricals
 
 
 
-## Predictive Modelling Requirements
-1. Baseline linear regression modelling to explicitly test working hypotheses and interpret coefficients 
-2. Additional Ridge Regression. Rationale for this is expected multicollinearity, where two or more features are strongly correlated with each other, not just Sale price. By applying coefficient regularisation, Ridge stabilises model estimates, reduces overfitting, and improves generalisation while retaining all informative features.
-3. Compare metrics
-4. Save processed dataset and metrics table (RMSE and R2)
+## Predictive Modelling
+Due to time constraints and the strong linear relationships identified during exploratory analysis, Ridge Regression was selected as a single, regularised linear model to balance predictive performance, interpretability, and robustness. This approach allows correlated housing features to jointly contribute to predictions while reducing overfitting, making it suitable for both analytical insight and decision support.
+
+1. Ridge Regression model pipeline
+3. Evaluate with RMSE and R2
+4. Save processed dataset and metrics table
 
 
 
