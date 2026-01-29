@@ -36,6 +36,11 @@ A data analytics and AI project exploring residential house prices using Python,
 - [Project Hypotheses](#project-hypotheses)
 - [Project Learnings & Problem Log](#project-learnings--problem-log)
 - [Project Plan (LO10)](#project-plan-lo10)
+- Output
+-   Exploratory Data Analysis
+-   Feature Engineering
+-   Predictive Modelling
+
 - [Future Development](#future-development)
 
 ## Client Brief
@@ -450,6 +455,35 @@ An AI-assisted insight summary is included to support data storytelling, clearly
 - Incorporate additional external datasets (e.g. economic indicators, interest rates).
 - Explore more advanced models and hyperparameter tuning.
 - Extend the dashboard with scenario-based forecasting and user-driven inputs.
+
+
+
+## Exploratory Data Analysis Summary 
+
+In Notebook 01, the dataset was explored using descriptive statistics and visual analysis to understand the distribution, spread, and relationships of key housing features. The analysis focused on sale price, living space, build quality, location indicators, and age-related variables. Summary statistics and distribution plots highlighted strong right-skewness in sale prices, wide variation in property size and quality, and meaningful differences linked to location and construction period. Relationship analysis showed that living area, overall quality, and neighbourhood factors are the most influential drivers of sale price, while property age contributes additional context but does not act as a standalone predictor. These findings provide a statistically grounded basis for feature selection, hypothesis testing, and predictive modelling in subsequent notebooks.
+
+At the close of EDA, the following hypotheses have been validated as true:
+1. **Property size and quality features** (e.g. living area, number of rooms, overall quality) have a significant positive impact on house sale prices.  
+2. **Location-related features** contribute substantially to price variation across properties.  
+3. **Newer properties** or properties with recent renovations tend to achieve higher sale prices than older properties.
+
+
+
+### Feature Engineering
+1. Target variable has a strong right skew. Requirement is to apply a log transformation to improve linear model performance by reducing influence of extreme high-price properties.
+2. Engineer HouseAge, RemodAge and TotalArea
+3. One-hot encode Neighbourhood with 2 to 3 categoricals
+
+
+
+## Predictive Modelling
+Due to time constraints and the strong linear relationships identified during exploratory analysis, Ridge Regression was selected as a single, regularised linear model to balance predictive performance, interpretability, and robustness. This approach allows correlated housing features to jointly contribute to predictions while reducing overfitting, making it suitable for both analytical insight and decision support.
+
+1. Ridge Regression model pipeline
+3. Evaluate with RMSE and R2
+4. Save processed dataset and metrics table
+
+
 
 
 ## Credits
