@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from pathlib import Path
 
 
 # -----------------------------
-# Page config
+# Page config (MUST be first Streamlit call)
 # -----------------------------
 st.set_page_config(
     page_title="House Price Analysis",
@@ -13,11 +14,10 @@ st.set_page_config(
 )
 
 st.title("🏠 Data-driven House Price Analysis")
-st.write("Target variable: **Saleprice**")
 
 
 # -----------------------------
-# Load data 
+# Load data
 # -----------------------------
 @st.cache_data
 def load_csv(path: str) -> pd.DataFrame:
@@ -37,21 +37,34 @@ except FileNotFoundError:
     )
     st.stop()
 
+
+# -----------------------------
+# Standardise target column name
+# -----------------------------
+# Some datasets use SalePrice (Kaggle), but your file might have Saleprice.
+if "SalePrice" in df.columns and "Saleprice" not in df.columns:
+    df = df.rename(columns={"SalePrice": "Saleprice"})
+
 if "Saleprice" not in df.columns:
-    st.error("Column `Saleprice` was not found in this file.")
+    st.error("Target column `Saleprice` / `SalePrice` was not found in this file.")
+    st.write("Available columns:", list(df.columns))
     st.stop()
+
+st.write("Target variable: **Saleprice**")
 
 
 # -----------------------------
-# Restore Neighborhood 
+# Restore Neighborhood (if one-hot encoded)
 # -----------------------------
 def restore_neighborhood(dataframe: pd.DataFrame) -> pd.DataFrame:
     nb_cols = [c for c in dataframe.columns if c.startswith("Neighborhood_")]
 
     if not nb_cols:
-        dataframe["Neighborhood"] = "Unknown"
+        if "Neighborhood" not in dataframe.columns:
+            dataframe["Neighborhood"] = "Unknown"
         return dataframe
 
+    dataframe = dataframe.copy()
     dataframe["Neighborhood"] = (
         dataframe[nb_cols]
         .idxmax(axis=1)
@@ -64,7 +77,7 @@ df = restore_neighborhood(df)
 
 
 # -----------------------------
-# Sidebar filters 
+# Sidebar filters
 # -----------------------------
 st.sidebar.header("Filters")
 
@@ -80,13 +93,7 @@ if year_col in df.columns:
         int(df[year_col].quantile(0.10)),
         int(df[year_col].quantile(0.90)),
     )
-
-    year_range = st.sidebar.slider(
-        "Year Built",
-        year_min,
-        year_max,
-        year_default,
-    )
+    year_range = st.sidebar.slider("Year Built", year_min, year_max, year_default)
 else:
     year_range = None
     st.sidebar.warning("YearBuilt not found — year filter disabled.")
@@ -111,13 +118,7 @@ if area_col in df.columns:
         int(df[area_col].quantile(0.10)),
         int(df[area_col].quantile(0.90)),
     )
-
-    area_range = st.sidebar.slider(
-        "Living Area (GrLivArea)",
-        a_min,
-        a_max,
-        a_default,
-    )
+    area_range = st.sidebar.slider("Living Area (GrLivArea)", a_min, a_max, a_default)
 else:
     area_range = None
     st.sidebar.warning("GrLivArea not found — area filter disabled.")
@@ -132,6 +133,7 @@ if "Neighborhood" in df.columns:
     )
 else:
     nb_selected = None
+    st.sidebar.warning("Neighborhood not found — neighborhood filter disabled.")
 
 
 # Apply filters
@@ -146,7 +148,7 @@ if qual_selected is not None and qual_col in df_f.columns:
 if area_range and area_col in df_f.columns:
     df_f = df_f[df_f[area_col].between(area_range[0], area_range[1])]
 
-if nb_selected:
+if nb_selected and "Neighborhood" in df_f.columns:
     df_f = df_f[df_f["Neighborhood"].isin(nb_selected)]
 
 if df_f.empty:
@@ -155,11 +157,9 @@ if df_f.empty:
 
 
 # -----------------------------
-# Tabs 
+# Tabs
 # -----------------------------
-tab1, tab2, tab3, tab4 = st.tabs(
-    ["Overview", "Visuals", "Drivers", "Data"]
-)
+tab1, tab2, tab3, tab4 = st.tabs(["Overview", "Visuals", "Drivers", "Data"])
 
 
 # =============================
@@ -183,7 +183,7 @@ with tab1:
     num_cols = df_f.select_dtypes(include="number").columns.tolist()
     summary = "Not enough numeric columns to calculate relationships."
 
-    if len(num_cols) > 3:
+    if "Saleprice" in num_cols and len(num_cols) > 3:
         corr = (
             df_f[num_cols]
             .corr(numeric_only=True)["Saleprice"]
@@ -241,13 +241,7 @@ with tab2:
 
     if "Neighborhood" in df_f.columns:
         st.markdown("**Neighborhood comparison (median Saleprice)**")
-
-        top_n = st.slider(
-            "Top N neighborhoods",
-            min_value=5,
-            max_value=25,
-            value=12,
-        )
+        top_n = st.slider("Top N neighborhoods", min_value=5, max_value=25, value=12)
 
         nb_med = (
             df_f.groupby("Neighborhood", as_index=False)["Saleprice"]
@@ -290,12 +284,7 @@ with tab3:
 
     corr_series = corr_series.drop(index="Saleprice", errors="ignore")
 
-    top_k = st.slider(
-        "How many drivers to show?",
-        min_value=5,
-        max_value=20,
-        value=10,
-    )
+    top_k = st.slider("How many drivers to show?", min_value=5, max_value=20, value=10)
 
     corr_top = corr_series.head(top_k).reset_index()
     corr_top.columns = ["Feature", "Correlation"]
@@ -330,7 +319,6 @@ with tab4:
     st.write("First 50 rows of the filtered dataset:")
     st.dataframe(df_f.head(50))
 
-  
     csv_bytes = df_f.to_csv(index=False).encode("utf-8")
     st.download_button(
         label="Download filtered data (CSV)",
