@@ -1,8 +1,4 @@
 import streamlit as st
-
-st.set_page_config(page_title="House Price Analytics", layout="wide")
-st.title("House Price Analytics & Prediction")
-import streamlit as st
 import pandas as pd
 import plotly.express as px
 
@@ -29,7 +25,7 @@ def load_csv(path: str) -> pd.DataFrame:
     return df_
 
 
-DATA_PATH = "../data/raw/Cleaned train.csv"
+DATA_PATH = "data/raw/cleaned_train.csv"
 
 
 try:

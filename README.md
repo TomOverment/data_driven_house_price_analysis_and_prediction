@@ -37,6 +37,10 @@ A data analytics and AI project exploring residential house prices using Python,
 - [Project Learnings & Problem Log](#project-learnings--problem-log)
 - [Project Plan (LO10)](#project-plan-lo10)
 - [Future Development](#future-development)
+- [Data](#data)
+- [Collaborators](#collaborators)
+- [Team Members & Contributions](#team-members--contributions)
+- [Credits](#credits)
 
 ## Client Brief
 
@@ -78,7 +82,7 @@ This project follows a **3-person, 3-day hackathon**, with one designated lead. 
 
 ---
 
-## Team Structure (Fixed for All 3 Days)
+## Team Structure (For All 3 Days)
 
 ### 1. Project Lead / Product Owner (Person A – Lead)
 
@@ -444,10 +448,31 @@ This structured plan ensures the project is **maintainable, extensible, and alig
 - Incorporate additional external datasets (e.g. economic indicators, interest rates).
 - Explore more advanced models and hyperparameter tuning.
 - Extend the dashboard with scenario-based forecasting and user-driven inputs.
+- Publish the project.
+- Add presentation.
 
+
+
+
+## Data
+- https://www.kaggle.com/datasets/chandramoulinaidu/house-price-prediction-cleaned-dataset
+
+## Collaborators
+
+This project was developed collaboratively during a time-boxed hackathon.  
+Each contributor owned clearly defined responsibilities to ensure accountability, clarity, and full learning-outcome coverage.
+
+### Team Members & Contributions
+
+| Name | Role | Primary Contributions | LinkedIn |
+|-----|------|----------------------|----------|
+| **Thomas Overment (Person A)** | Project Lead | Project framing, business case, README structure, ethics & governance, learning-outcome mapping, coordination | [LinkedIn](https://www.linkedin.com/in/thomas-overment-12a504304/) |
+| **Hellen (Person B)** | Data & Modelling Engineer | Data cleaning, exploratory data analysis, statistical analysis, feature engineering, model development and evaluation | [LinkedIn](#) |
+| **Valleriia (Person C)** | Dashboard & UX Engineer | Streamlit application, interactive visualisations, UX design, accessibility, narrative flow | [LinkedIn](#) |
 
 ## Credits
-- https://deevid.ai/
--
+- deevid.ai
+- gimp
 - kdenlive
-
+- Vertex ai
+- Chat GPT
