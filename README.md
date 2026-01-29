@@ -458,6 +458,18 @@ An AI-assisted insight summary is included to support data storytelling, clearly
 - Incorporate additional external datasets (e.g. economic indicators, interest rates).
 - Explore more advanced models and hyperparameter tuning.
 - Extend the dashboard with scenario-based forecasting and user-driven inputs.
+  ## 📊 Power BI Dashboard
+
+The dashboard below provides a high-level overview of key factors influencing house prices.
+
+It combines:
+- The relationship between living area and sale price
+- The impact of overall build quality on price
+- Price trends across construction periods
+- Distribution of houses by build quality
+
+![Power BI Dashboard](docs/dashboard.png)
+
 
 ## Exploratory Data Analysis Summary 
 
