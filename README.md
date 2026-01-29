@@ -1,9 +1,18 @@
-# Data driven house price analysis and prediction
-A data analytics and AI project exploring residential house prices using Python, machine learning, and an interactive dashboard exploring house inflation.
+<p align="center">
+  <img src="app/assets/images/team_framework_logo_alpha.png" alt="Team Framework logo" width="520">
+</p>
+
+<h1 align="center"><strong>Data driven house price analysis and prediction</strong></h1>
 
 <p align="center">
   <img src="app/assets/images/inflation.gif" alt="House price inflation animation" width="520">
 </p>
+
+<p align="center">
+  <em>Visual metaphor for house price inflation and market dynamics</em>
+</p>
+
+A data analytics and AI project exploring residential house prices using Python, machine learning, and an interactive dashboard.
 
 ## Table of Contents
 
@@ -25,12 +34,14 @@ A data analytics and AI project exploring residential house prices using Python,
 - [Business Case](#business-case)
 - [Target Audience](#target-audience)
 - [Project Hypotheses](#project-hypotheses)
+- [Project Learnings & Problem Log](#project-learnings--problem-log)
 - [Project Plan (LO10)](#project-plan-lo10)
 - Output
 -   Exploratory Data Analysis
 -   Feature Engineering
 -   Predictive Modelling
 
+- [Future Development](#future-development)
 
 ## Client Brief
 
@@ -376,6 +387,19 @@ The following hypotheses guide the analytical approach of this project and are e
 Each hypothesis is tested and validated through data exploration, statistical analysis, and model evaluation within the Jupyter notebooks and reflected in the dashboard insights.
 
 ---
+## Project Learnings & Problem Log
+
+This section records key challenges encountered during development, how they were resolved, and lessons learned.  
+It is intended as a shared reference for collaborators and future maintainers.
+
+| Date       | Area    | Problem                                | Resolution        | What We Learned                     | Screenshot |
+|------------|---------|----------------------------------------|-------------------|-------------------------------------|------------|
+| 2026-01-28 | Process | No central place to record problems    | Added log section | Capture issues early saves time     | [![Problem log][pl-log]] |
+| YYYY-MM-DD |         |                                        |                   |                                     |            |
+
+[pl-log]: app/assets/images/project_learnings_problem_log.png
+
+
 
 ## Project Plan (LO10)
 
@@ -408,6 +432,30 @@ This project follows a structured, time-bound development plan aligned with best
 - Outline future improvements, maintenance, and potential extensions  
 
 This structured plan ensures the project is **maintainable, extensible, and aligned with real-world analytics workflows**, clearly demonstrating Learning Outcome 10 (LO10).
+### Streamlit App – Summary
+
+The Streamlit application provides an interactive exploratory interface to analyse the drivers of house sale prices, with dynamic filtering by build year, living area, overall quality, and neighbourhood.
+Visualisations demonstrate that property size and build quality are the strongest drivers of sale price, showing clear positive relationships between living area, overall quality, and price levels.
+Correlation-based driver analysis highlights that size-related features dominate price variation, while location and age-related variables contribute additional but secondary explanatory power.
+An AI-assisted insight summary is included to support data storytelling, clearly labelled as correlation-based and intended to complement, not replace, statistical model interpretation.
+
+## Reflection & Future Development
+
+### Key Learnings
+- Early establishment of documentation structures (e.g. problem logs) improves collaboration and reduces rework.
+- Summarising EDA findings in plain language improves accessibility for mixed audiences.
+- Iterative refinement of the README clarified project scope and decision-making rationale.
+
+### Limitations
+- Model performance is constrained by the size and scope of the available dataset.
+- Predictions are sensitive to temporal market changes and feature availability.
+- Results should be interpreted as indicative trends rather than precise valuations.
+
+### Future Development
+- Incorporate additional external datasets (e.g. economic indicators, interest rates).
+- Explore more advanced models and hyperparameter tuning.
+- Extend the dashboard with scenario-based forecasting and user-driven inputs.
+
 
 
 ## Exploratory Data Analysis Summary 
@@ -440,5 +488,6 @@ Due to time constraints and the strong linear relationships identified during ex
 
 ## Credits
 - https://deevid.ai/
+-
 - kdenlive
 
