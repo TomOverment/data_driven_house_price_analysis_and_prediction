@@ -20,17 +20,13 @@ st.title("🏠 Data-driven House Price Analysis")
 # Load data
 # -----------------------------
 @st.cache_data
-def load_csv(path: Path) -> pd.DataFrame:
-    return pd.read_csv(path)
+def load_csv(path: str) -> pd.DataFrame:
+    df_ = pd.read_csv(path)
+    return df_
 
 
-# Project structure assumption:
-# repo/
-#   app/Home.py
-#   data/raw/...
-APP_DIR = Path(__file__).resolve().parent          # .../app
-REPO_ROOT = APP_DIR.parent                         # repo/
-DATA_PATH = REPO_ROOT / "data" / "raw" / "Cleaned train.csv"
+DATA_PATH = "data/raw/cleaned_train.csv"
+
 
 try:
     df = load_csv(DATA_PATH)

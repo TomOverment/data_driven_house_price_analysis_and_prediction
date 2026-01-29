@@ -45,6 +45,15 @@ A data analytics and AI project exploring residential house prices using Python,
 - [Future Development](#future-development)
 - [Credits](#Credits)
 
+- [Output](#output)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Feature Engineering](#feature-engineering)
+- [Predictive Modelling](#predictive-modelling)
+- [Future Development](#future-development)
+- [Data](#data)
+- [Collaborators](#collaborators)
+- [Team Members & Contributions](#team-members--contributions)
+- [Credits](#credits)
 
 ## Client Brief
 
@@ -86,7 +95,7 @@ This project follows a **3-person, 3-day hackathon**, with one designated lead. 
 
 ---
 
-## Team Structure (Fixed for All 3 Days)
+## Team Structure (For All 3 Days)
 
 ### 1. Project Lead / Product Owner (Person A – Lead)
 
@@ -458,12 +467,27 @@ An AI-assisted insight summary is included to support data storytelling, clearly
 - Incorporate additional external datasets (e.g. economic indicators, interest rates).
 - Explore more advanced models and hyperparameter tuning.
 - Extend the dashboard with scenario-based forecasting and user-driven inputs.
+  ## 📊 Power BI Dashboard
 
+The dashboard below provides a high-level overview of key factors influencing house prices.
+
+It combines:
+- The relationship between living area and sale price
+- The impact of overall build quality on price
+- Price trends across construction periods
+- Distribution of houses by build quality
+
+![Power BI Dashboard](docs/dashboard.png)
 
 
 ## Exploratory Data Analysis Summary 
 
 In Notebook 01, the dataset was explored using descriptive statistics and visual analysis to understand the distribution, spread, and relationships of key housing features. The analysis focused on sale price, living space, build quality, location indicators, and age-related variables. Summary statistics and distribution plots highlighted strong right-skewness in sale prices, wide variation in property size and quality, and meaningful differences linked to location and construction period. Relationship analysis showed that living area, overall quality, and neighbourhood factors are the most influential drivers of sale price, while property age contributes additional context but does not act as a standalone predictor. These findings provide a statistically grounded basis for feature selection, hypothesis testing, and predictive modelling in subsequent notebooks.
+
+At the close of EDA, the following hypotheses have been validated as true:
+1. **Property size and quality features** (e.g. living area, number of rooms, overall quality) have a significant positive impact on house sale prices.  
+2. **Location-related features** contribute substantially to price variation across properties.  
+3. **Newer properties** or properties with recent renovations tend to achieve higher sale prices than older properties.
 
 
 ### Feature Engineering
@@ -519,6 +543,13 @@ The Ridge Regression model achieves strong predictive performance (cross-validat
 - Sale price was modelled at the property level only; broader economic factors such as interest rates or market cycles were not included.
 - Outliers were removed to improve model stability, which may reduce accuracy for extreme high-value properties.
 
+- Publish the project.
+- Add presentation.
+
+## Data
+- https://www.kaggle.com/datasets/chandramoulinaidu/house-price-prediction-cleaned-dataset
+
+## Collaborators
 
 ## Future Developments
 - Explore non-linear models (e.g. Random Forest or Gradient Boosting) to capture more complex feature interactions.
@@ -526,7 +557,16 @@ The Ridge Regression model achieves strong predictive performance (cross-validat
 - Extend the approach to other geographic regions to test model transferability.
 - Use spatial features or neighbourhood-level aggregation to further improve location sensitivity.
 - Compare model performance with and without outlier treatment to assess impact on high-end price predictions.
+This project was developed collaboratively during a time-boxed hackathon.  
+Each contributor owned clearly defined responsibilities to ensure accountability, clarity, and full learning-outcome coverage.
 
+### Team Members & Contributions
+
+| Name | Role | Primary Contributions | LinkedIn |
+|-----|------|----------------------|----------|
+| **Thomas Overment (Person A)** | Project Lead | Project framing, business case, README structure, ethics & governance, learning-outcome mapping, coordination | [LinkedIn](https://www.linkedin.com/in/thomas-overment-12a504304/) |
+| **Hellen (Person B)** | Data & Modelling Engineer | Data cleaning, exploratory data analysis, statistical analysis, feature engineering, model development and evaluation | [LinkedIn](#) |
+| **Valleriia (Person C)** | Dashboard & UX Engineer | Streamlit application, interactive visualisations, UX design, accessibility, narrative flow | [LinkedIn](#) |
 
 ## Credits
 - https://deevid.ai/
@@ -535,3 +575,8 @@ The Ridge Regression model achieves strong predictive performance (cross-validat
 - VS Code Copilot (Code writing and code error support)
 - SciKit learn official documentation (model development support)
 
+- deevid.ai
+- gimp
+- kdenlive
+- Vertex ai
+- Chat GPT
