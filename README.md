@@ -36,6 +36,15 @@ A data analytics and AI project exploring residential house prices using Python,
 - [Project Hypotheses](#project-hypotheses)
 - [Project Learnings & Problem Log](#project-learnings--problem-log)
 - [Project Plan (LO10)](#project-plan-lo10)
+- [Exploratory Data Analysis](#exploratory-data-analysis-summary)
+- [Feature Engineering](#feature-engineering) 
+- [Predictive Modelling](#predictive-modelling)
+- [Model Performance and Results](#Model-Performance-and-Results)
+- [Hypotheses Conclusions](#Hypotheses-Conclusions)
+- [Limitations](#Limitations)
+- [Future Development](#future-development)
+- [Credits](#Credits)
+
 - [Output](#output)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
 - [Feature Engineering](#feature-engineering)
@@ -480,17 +489,59 @@ At the close of EDA, the following hypotheses have been validated as true:
 2. **Location-related features** contribute substantially to price variation across properties.  
 3. **Newer properties** or properties with recent renovations tend to achieve higher sale prices than older properties.
 
+
 ### Feature Engineering
+In Notebook 2, light feature engineering is completed.
 1. Target variable has a strong right skew. Requirement is to apply a log transformation to improve linear model performance by reducing influence of extreme high-price properties.
 2. Engineer HouseAge, RemodAge and TotalArea
-3. One-hot encode Neighbourhood with 2 to 3 categoricals
+3. One-hot encode Neighbourhood feature with categoricals
+
 
 ## Predictive Modelling
-Due to time constraints and the strong linear relationships identified during exploratory analysis, Ridge Regression was selected as a single, regularised linear model to balance predictive performance, interpretability, and robustness. This approach allows correlated housing features to jointly contribute to predictions while reducing overfitting, making it suitable for both analytical insight and decision support.
+A supervised regression approach was used to predict residential property sale prices based on structural, quality, and location-related features.
+Prior to modelling, the dataset was cleaned and prepared through feature selection, handling of missing values, and encoding of categorical variables. Sale price was log-transformed to reduce skewness and stabilise variance, improving model performance and interpretability.
+Several linear models were evaluated, with Ridge Regression selected as the final model due to its ability to manage multicollinearity between correlated housing features such as living area, quality, and neighbourhood indicators. Regularisation strength was tuned using cross-validation to balance bias and variance.
+Model performance was assessed using k-fold cross-validation to ensure results were robust and not dependent on a single train–test split.
 
-1. Ridge Regression model pipeline
-3. Evaluate with RMSE and R2
-4. Save processed dataset and metrics table
+
+## Model Performance and Results
+The final Ridge Regression model demonstrates strong and stable predictive performance:
+
+1. R² ≈ 0.87, indicating that the model explains approximately 87% of the variation in sale prices
+2. Consistent RMSE across folds, showing low variability in prediction error
+3. Low standard deviation of cross-validated scores, suggesting good generalisation across the dataset
+
+Cross-validation results confirm that the model performs reliably across different subsets of the data, rather than being driven by a small number of high- or low-priced properties.
+Feature importance analysis shows that living area, overall quality, and location-related features are the strongest contributors to predicted sale price, aligning closely with insights identified during exploratory analysis.
+
+## Conclusion
+Overall, the prediction model provides a robust and interpretable baseline for house price estimation. The strong cross-validated performance confirms that core structural and quality features are highly effective predictors of sale price, supporting the validity of earlier exploratory findings and meeting the project’s predictive modelling objectives.
+
+
+## Hypotheses Conclusions
+
+**Hypothesis 1: Property size and quality features have a significant positive impact on house sale prices.**  
+**Supported (strongly).**  
+The Ridge Regression results show that overall build quality and living area are the most influential predictors of sale price, with the largest positive coefficients in the model. Cross-validation confirms that these effects are stable across data splits, indicating that size and quality consistently drive price variation. This strongly supports the hypothesis that larger, higher-quality properties achieve higher sale prices.
+
+**Hypothesis 2: Location-related features contribute substantially to price variation across properties.**  
+**Partially supported.**  
+Neighbourhood effects are clearly present in the model, with several location dummy variables showing consistent positive or negative coefficients. However, their individual influence is smaller than that of size and quality features. Cross-validation confirms that these location effects are stable, suggesting genuine spatial influence, but the results indicate that location acts as a moderating factor rather than a primary driver of price.
+
+**Hypothesis 3: Newer properties or properties with recent renovations tend to achieve higher sale prices than older properties.**  
+**Supported (moderately).**  
+Year built and year of last renovation both show positive relationships with sale price, indicating that newer and more recently renovated properties tend to sell for more. These effects are consistent but smaller in magnitude than size and quality. This suggests that age-related features contribute to price variation, but do not dominate once core property characteristics are taken into account.
+
+**Hypothesis 4: Machine learning models can predict house prices with greater accuracy than simple baseline statistical methods when trained on cleaned and engineered features.**  
+**Supported within scope.**  
+The Ridge Regression model achieves strong predictive performance (cross-validated R² ≈ 0.87) with low variation across folds, indicating robust generalisation. While a direct baseline model comparison was not implemented, the stability and explanatory power of the regularised model demonstrate that machine learning techniques applied to cleaned and engineered features can provide accurate and reliable price predictions beyond simple descriptive or unregularised approaches.
+
+
+## Limitations
+- The model is trained on historical sales data from a single housing market, which may limit its generalisability to other regions or time periods.
+- While Ridge Regression manages multicollinearity effectively, it assumes linear relationships and may not fully capture more complex interactions between features.
+- Sale price was modelled at the property level only; broader economic factors such as interest rates or market cycles were not included.
+- Outliers were removed to improve model stability, which may reduce accuracy for extreme high-value properties.
 
 - Publish the project.
 - Add presentation.
@@ -500,6 +551,12 @@ Due to time constraints and the strong linear relationships identified during ex
 
 ## Collaborators
 
+## Future Developments
+- Explore non-linear models (e.g. Random Forest or Gradient Boosting) to capture more complex feature interactions.
+- Incorporate temporal or economic variables to account for market trends and external influences on pricing.
+- Extend the approach to other geographic regions to test model transferability.
+- Use spatial features or neighbourhood-level aggregation to further improve location sensitivity.
+- Compare model performance with and without outlier treatment to assess impact on high-end price predictions.
 This project was developed collaboratively during a time-boxed hackathon.  
 Each contributor owned clearly defined responsibilities to ensure accountability, clarity, and full learning-outcome coverage.
 
@@ -512,6 +569,12 @@ Each contributor owned clearly defined responsibilities to ensure accountability
 | **Valleriia (Person C)** | Dashboard & UX Engineer | Streamlit application, interactive visualisations, UX design, accessibility, narrative flow | [LinkedIn](#) |
 
 ## Credits
+- https://deevid.ai/
+- kdenlive
+- ChatGPT (project management support)
+- VS Code Copilot (Code writing and code error support)
+- SciKit learn official documentation (model development support)
+
 - deevid.ai
 - gimp
 - kdenlive
